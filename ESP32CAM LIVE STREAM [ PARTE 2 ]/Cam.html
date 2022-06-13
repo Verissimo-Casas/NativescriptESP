@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32-EYE</title>
+</head>
+<body>
+  <img id="stream">
+  <script>
+    const Ws_url = "ws://ip:1883"
+    const ws = new WebSocket(Ws_url)
+
+    ws.binaryType = 'arraybuffer'
+
+    if (ws) {
+      ws.onopen = () => {
+        console.log('Client conectado...');
+      }
+    }
+
+    ws.onmessage = message => {
+      var bytes = new Uint8Array(message.data)
+      var binary = ''
+      var len = bytes.byteLength
+
+      for (let index = 0; index < len; index++) {
+        binary += String.fromCharCode(bytes[index])
+      }
+
+      var img = document.getElementById('stream')
+      img.src ='data:imagem/jpg;base64, ' +window.btoa(binary)
+    }
+  </script>
+</body>
+</html>
