@@ -3,7 +3,13 @@ import { io } from "./http";
 io.on("connection", (socket) => {
 
   socket.on("messagem", (data) => {
-    console.log("funfando");
+    List_Client.forEach((socket, i) => {
+      if (socket.readyState === socket.OPEN) {
+        socket.send(data)
+      } else {
+        List_Client.splice(i, 1)
+      }
+    })
   });
 });
 
