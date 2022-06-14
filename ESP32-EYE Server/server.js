@@ -12,7 +12,7 @@ const Socket = new Ws.Server({port: Ws_port}, () => {
   console.log("Websocket listem port:>> 1833");
 })
 
-Socket.on("connection", (ws, req)=> {
+Socket.on("connection", (ws, req) => {
   console.log('conectado...');
   List_Client.push(ws)
   ws.on('messagem', data => {
