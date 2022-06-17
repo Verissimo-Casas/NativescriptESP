@@ -11,7 +11,7 @@ io.on("connection", (socket) => {
 // https://www.youtube.com/watch?v=_Z9Axfh6AEU
 
 // https://www.dobitaobyte.com.br/socket-client-com-esp32/
-
+// https://www.iotsharing.com/2020/03/demo-48-using-websocket-for-camera-live.html
 /*
 const Socket = new Ws.Server({ port: Ws_port }, () => {
   console.log("Websocket listem port:>> 1833");
