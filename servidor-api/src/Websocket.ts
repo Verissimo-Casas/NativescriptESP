@@ -1,22 +1,16 @@
 import { io } from "./http";
 
 io.on("connection", (socket) => {
-
   socket.on("messagem", (data) => {
-    List_Client.forEach((socket, i) => {
-      if (socket.readyState === socket.OPEN) {
-        socket.send(data)
-      } else {
-        List_Client.splice(i, 1)
-      }
-    })
+    console.log("ESP-EYE CONNECT", data);
+    socket.send(data)
   });
 });
 
+// https://www.youtube.com/watch?v=R84rTfBMaoU
+// https://www.youtube.com/watch?v=_Z9Axfh6AEU
 
-
-
-
+// https://www.dobitaobyte.com.br/socket-client-com-esp32/
 
 /*
 const Socket = new Ws.Server({ port: Ws_port }, () => {
